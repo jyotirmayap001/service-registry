@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-registry
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-registry
+  template:
+    metadata:
+      labels:
+        app: service-registry
+    spec:
+      containers:
+        - name: app
+          image: jyotirmayapati001/service-registry:cicd
+          ports:
+            - containerPort: 8761
+          imagePullPolicy: IfNotPresent
+---          
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-registry
+spec:
+  selector:
+    app: service-registry
+  ports:
+    - port: 80
+      targetPort: 8761
+  type: NodePort          
