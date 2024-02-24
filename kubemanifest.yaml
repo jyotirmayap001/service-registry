@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: jyotirmayapati001/service-registry:cicd
+          image: jyotirmayapati001/springboot-docker:cicd
           ports:
             - containerPort: 8761
           imagePullPolicy: IfNotPresent
